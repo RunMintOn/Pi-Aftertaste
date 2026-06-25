@@ -2,11 +2,12 @@
 
 ![](picture.png)
 
-> ***“Those who cannot remember the past are condemned to repeat it.”***  
-> — George Santayana
-
+> ***“Those who cannot remember the past are condemned to repeat it.”***
+> —— George Santayana
+> 
 > *“不能记住过去的人，注定会重蹈覆辙。”*
 
+---
 
 把项目里的 Pi 历史协作，沉淀为**可复用的项目上下文、协作规则与运行时提醒**。
 
@@ -213,7 +214,7 @@ python3 project_distill.py \
 - `collaboration_guide.md`
 - `patterns.md`
 
-> 备注：当前主线已经可运行，但整体项目仍在快速收口中。尤其是 prompt 组织、groundedness、reminder rules 并入主 pipeline、以及运行时交互细节，后续还会继续打磨。你可以把它理解为：**核心能力已经可用，但某些边角还比较实验性。**
+> 备注：当前主线已经可运行，但整体项目仍在快速收口中。尤其是 prompt 组织、groundedness、reminder rules 并入主 pipeline、以及运行时交互细节，后续还会继续打磨...此仓库为 public repo，后续会逐渐完善丰富
 
 ---
 
@@ -502,6 +503,11 @@ pi-distill/
 ---
 
 ## 10. 一句话收尾
+
+> ***“Experience is not what happens to you; it is what you do with what happens to you.”***
+> —— Aldous Huxley  
+> 
+> *“经验不是发生在你身上的事，而是你如何处理发生在你身上的事。”*
 
 Pi-Aftertaste 的目标不是把历史对话存下来，
 而是把历史协作里的有效部分提炼出来，变成：
