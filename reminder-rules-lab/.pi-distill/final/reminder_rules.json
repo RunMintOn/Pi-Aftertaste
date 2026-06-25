@@ -1,0 +1,110 @@
+{
+  "version": "v1",
+  "default_enabled": true,
+  "rules": [
+    {
+      "id": "design-boundary-clarify",
+      "mode": "notify",
+      "must_match_any": [],
+      "must_match_all_groups": [
+        ["设计", "方案", "边界", "路线"],
+        ["判断", "确认", "评审", "先看", "先审"]
+      ],
+      "anti_patterns": ["直接改", "直接实现", "不用讨论"],
+      "message": "这类请求通常先确认：先审方案/边界，还是直接实现。",
+      "suggestion": "可补一句：先判断目标和路线，再动手。",
+      "evidence": [
+        "Clarify early: 这次先审设计，不改代码。",
+        "Clarify early: 先帮我判断目标和路线，再动手。",
+        "Working style: 不确定的边界问题，先给路线判断，再进入实现。"
+      ],
+      "cooldown": "session_once",
+      "confidence": "high"
+    },
+    {
+      "id": "readme-display-scope-clarify",
+      "mode": "notify",
+      "must_match_any": ["README", "包页", "pi.image", "徽章", "元数据", "预览图"],
+      "must_match_all_groups": [],
+      "anti_patterns": ["只看页面文案，不动发布物"],
+      "message": "这类请求最好先分清：根 README、包内同步、pi.image、包页展示是否都要一起处理。",
+      "suggestion": "可补一句：只改根 README，还是要连包内同步和 pi.image 一起处理？",
+      "evidence": [
+        "How to start: 涉及 README、图片、徽章、包页、元数据时，先约定是否要先预览。",
+        "Clarify early: README 顶图、pi.image、包页展示要不要一起校准？",
+        "Agent should ask: 这次要同步处理根 README、包内 README 和 pi.image 吗？"
+      ],
+      "cooldown": "turn_once",
+      "confidence": "high"
+    },
+    {
+      "id": "preview-before-release",
+      "mode": "notify",
+      "must_match_any": ["README", "包页", "展示", "预览", "图片", "badge", "npm pack"],
+      "must_match_all_groups": [
+        ["提交", "发布", "push", "publish"]
+      ],
+      "anti_patterns": ["不用预览", "直接发", "直接发布"],
+      "message": "建议先预览 README / 包页效果，再决定是否提交或发布。",
+      "suggestion": "可补一句：先预览，不要先提交/发布。",
+      "evidence": [
+        "How to start: 先约定是否要先预览，再提交/发布。",
+        "Working style: 视觉/文案类改动先看预览效果。",
+        "User can say: 先预览 README / 包页效果，不要先提交。"
+      ],
+      "cooldown": "turn_once",
+      "confidence": "medium"
+    },
+    {
+      "id": "publish-confirm",
+      "mode": "confirm",
+      "must_match_any": ["push", "publish", "npm publish", "commit", "发版", "发布"],
+      "must_match_all_groups": [],
+      "anti_patterns": ["不要 push", "不要 publish", "只本地", "先别发", "暂不发布"],
+      "message": "检测到外部发布/推送动作。这类操作最好和本地修改分开确认。",
+      "suggestion": "建议先明确：这次只本地修好，还是要一起 commit / push / publish？",
+      "evidence": [
+        "Clarify early: 这次只改本地，还是要一起 commit / push / publish？",
+        "Working style: 发布相关动作和本地修改分开确认，避免默认外发。",
+        "Avoid friction: 不要把本地修改和外部发布动作混成一步默认执行。"
+      ],
+      "cooldown": "turn_once",
+      "confidence": "high"
+    },
+    {
+      "id": "network-validation-clarify",
+      "mode": "notify",
+      "must_match_any": [],
+      "must_match_all_groups": [
+        ["网络", "联网", "HTTP", "curl", "ping"],
+        ["验证", "测试", "检查", "可用", "能不能", "通不通"]
+      ],
+      "anti_patterns": ["只改 network 配置说明", "不是在测网络"],
+      "message": "网络验证最好先区分：你要确认的是 HTTP/curl，可不一定要用 ping。",
+      "suggestion": "可补一句：这次是测 HTTP 可用，还是连 ping 也要确认？",
+      "evidence": [
+        "Validation style: 网络相关优先验证 curl/HTTP，不要默认用 ping 代表网络可用。",
+        "Agent should ask: 要验证的是 HTTP 可用，还是连 ping 也要确认？",
+        "Avoid friction: 不要默认 network=open 就等于所有网络能力正常。"
+      ],
+      "cooldown": "turn_once",
+      "confidence": "high"
+    },
+    {
+      "id": "sandbox-mode-clarify",
+      "mode": "notify",
+      "must_match_any": ["readonly", "workspace-write", "network", "沙盒", "权限模式"],
+      "must_match_all_groups": [
+        ["验证", "测试", "检查", "模式"]
+      ],
+      "anti_patterns": ["只是在解释文档里的模式"],
+      "message": "涉及沙盒/权限时，最好先说明要验证哪种模式和哪类命令。",
+      "suggestion": "可补一句：这次测 readonly / workspace-write / network 哪一种？",
+      "evidence": [
+        "Validation style: 沙盒权限改动先问清要验证哪种模式以及测试命令类型。"
+      ],
+      "cooldown": "turn_once",
+      "confidence": "medium"
+    }
+  ]
+}
