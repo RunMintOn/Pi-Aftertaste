@@ -156,8 +156,8 @@ Pi-Aftertaste
 >
 > 因此最推荐的进入方式有两种：
 >
-> - 想先快速感受效果：直接跑 `reminder-rules-lab`
-> - 想跑完整项目蒸馏：直接使用 `project_distill.py`
+> - 想先快速感受效果：直接跑 `examples/reminder-rules-lab`
+> - 想跑完整项目蒸馏：直接使用 `aftertaste/project_distill.py`
 
 ### 3.1 环境要求
 
@@ -178,7 +178,7 @@ cd pi-distill
 ### 3.3 最快体验：直接进 lab 目录
 
 ```bash
-cd reminder-rules-lab
+cd examples/reminder-rules-lab
 pi
 ```
 
@@ -198,7 +198,7 @@ pi
 如果你想直接跑完整的项目蒸馏流程，而不是只体验 reminder lab，可以使用：
 
 ```bash
-python3 project_distill.py \
+python3 aftertaste/project_distill.py \
   --mode experiment \
   --experiment-name my-distill-run \
   --compiled-root /path/to/compiled \
@@ -222,12 +222,12 @@ python3 project_distill.py \
 
 这个部分很重要。当前默认设计是：**尽量 project-local，尽量可见，尽量不偷偷改全局行为。**
 
-### 4.1 直接跑 `reminder-rules-lab` 时
+### 4.1 直接跑 `examples/reminder-rules-lab` 时
 
 影响范围主要在这个实验目录里：
 
 ```text
-reminder-rules-lab/
+examples/reminder-rules-lab/
   .pi/extensions/reminder-rules/
   .pi-distill/final/reminder_rules.json
 ```
@@ -319,7 +319,7 @@ experiments/<experiment-name>/
 进入实验目录：
 
 ```bash
-cd reminder-rules-lab
+cd examples/reminder-rules-lab
 pi
 ```
 
@@ -370,7 +370,7 @@ pi
 ### fake runner（最快）
 
 ```bash
-python3 reminder_rules_sidecar.py \
+python3 aftertaste/reminder_rules_sidecar.py \
   --guide .scratch/reminder-rules/sample_input.collaboration_guide.md \
   --runner fake
 ```
@@ -378,7 +378,7 @@ python3 reminder_rules_sidecar.py \
 ### 真实 Pi runner
 
 ```bash
-python3 reminder_rules_sidecar.py \
+python3 aftertaste/reminder_rules_sidecar.py \
   --guide /path/to/collaboration_guide.md \
   --runner pi-cli-json \
   --model openai-codex/gpt-5.4-mini \
@@ -398,7 +398,7 @@ python3 reminder_rules_sidecar.py \
 典型 experiment 命令形态：
 
 ```bash
-python3 project_distill.py \
+python3 aftertaste/project_distill.py \
   --mode experiment \
   --experiment-name sandbox-project-distill-real-synthesis \
   --compiled-root pi-distill/vcc-base/sandbox-for-pi/compiled \
@@ -452,20 +452,31 @@ python3 project_distill.py \
 ```text
 pi-distill/
   README.md
-  project_distill_pipeline.py
-  reminder_rules_sidecar.py
-  reminder_rules_extension.ts
-  reminder_rules_runtime.mjs
+  AGENTS.md
+  picture.png
+  aftertaste/
+    project_distill.py
+    project_distill_pipeline.py
+    runtime_support.py
+    reminder_rules_sidecar.py
+    reminder_rules_extension.ts
+    reminder_rules_runtime.mjs
+  scripts/
+    public_sync.py
   docs/
     prompts/
+    PRD/
+    reference/
+  examples/
+    reminder-rules-lab/
+  tests/
+    test_project_distill.py
+    test_reminder_rules_sidecar.py
+    test_reminder_rules_runtime.mjs
   .scratch/
-    project-distill-pipeline/
-    reminder-rules/
   experiments/
-  reminder-rules-lab/
-  test_project_distill.py
-  test_reminder_rules_sidecar.py
-  test_reminder_rules_runtime.mjs
+  runs/
+  vcc-base/
 ```
 
 ---
@@ -480,7 +491,7 @@ pi-distill/
 - same-session self-validation
 - reminder rules sidecar generator
 - reminder rules extension MVP
-- reminder-rules-lab 可直接手测
+- examples/reminder-rules-lab 可直接手测
 
 ### 正在收口
 

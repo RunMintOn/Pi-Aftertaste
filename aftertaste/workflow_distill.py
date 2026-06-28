@@ -4,11 +4,14 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import sys
 from collections import Counter, defaultdict
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from runtime_support import (
     build_runtime_paths,

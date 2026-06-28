@@ -5,7 +5,7 @@
 ## 用法
 
 ```bash
-cd pi-distill/reminder-rules-lab
+cd pi-distill/examples/reminder-rules-lab
 pi
 ```
 
@@ -40,9 +40,10 @@ pi
 然后直接输入 `TEST_CASES.md` 里的示例句子，观察：
 
 - `notify`：只提醒，不阻断
-- `confirm`：会弹两个明确选项：
+- `confirm`：会弹三个明确选项：
   - `直接发送，不修改`
   - `取消发送，继续修改输入`
+  - `直接发送，并永久忽略此提醒`
 
 如果你选择取消，原输入会被放回编辑框，不会直接丢失。
 

@@ -9,8 +9,9 @@ from pathlib import Path
 from typing import Any
 
 DEFAULT_MODEL = "openai-codex/gpt-5.4-mini"
-DEFAULT_PROMPT_PATH = Path(__file__).resolve().parent / ".scratch" / "reminder-rules" / "prompt.md"
-DEFAULT_RUNS_ROOT = Path(__file__).resolve().parent / ".scratch" / "reminder-rules" / "runs"
+REPO_ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_PROMPT_PATH = REPO_ROOT / ".scratch" / "reminder-rules" / "prompt.md"
+DEFAULT_RUNS_ROOT = REPO_ROOT / ".scratch" / "reminder-rules" / "runs"
 
 
 def utc_run_id() -> str:

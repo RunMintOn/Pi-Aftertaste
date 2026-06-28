@@ -934,7 +934,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 
 
 def resolve_config(args: argparse.Namespace) -> PipelineConfig:
-    repo_root = Path(__file__).resolve().parent
+    repo_root = Path(__file__).resolve().parents[1]
     project_root = Path(args.project_root).expanduser().resolve() if args.project_root else None
     sessions_root = Path(args.sessions_root).expanduser().resolve() if args.sessions_root else None
     compiled_root = Path(args.compiled_root).expanduser().resolve() if args.compiled_root else None
